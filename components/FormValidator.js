@@ -16,19 +16,19 @@ _showInputError(inputElement, errorMessage) {
   }
 
   _hideInputError(inputElement) {
-    const errorElement = this._formEl.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formEl.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = "";
     errorElement.classList.remove(this._errorClass);
   }
 
-  _checkInputValidity(inputElement) {
-    if (!inputElement.validity.valid) {
-      inputElement.classList.add(this._inputErrorClass);
-    } else {
-      inputElement.classList.remove(this._inputErrorClass);
-    }
+ _checkInputValidity(inputElement) {
+  if (!inputElement.validity.valid) {
+    this._showInputError(inputElement, inputElement.validationMessage);
+  } else {
+    this._hideInputError(inputElement);
   }
+}
 
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {

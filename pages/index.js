@@ -46,10 +46,9 @@ addTodoForm.addEventListener("submit", (evt) => {
 const id = uuidv4();
 
   const values = { name, date, id };
-  initialTodos.forEach((item) => {
-  renderTodo(item);  
-});
-  closeModal(addTodoPopup);
+ renderTodo(values);        
+closeModal(addTodoPopup);
+addTodoForm.reset();
 });
 
 const renderTodo = (item) => {
