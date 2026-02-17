@@ -9,7 +9,7 @@ class FormValidator {
   }
 
 _showInputError(inputElement, errorMessage) {
-    const errorElement = this._formEl.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formEl.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
@@ -74,13 +74,12 @@ _showInputError(inputElement, errorMessage) {
   }
 
   
-  resetValidation() {
+    resetValidation() {
     this._formEl.reset();
-    this._buttonElement.classList.add(this._inactiveButtonClass);
-    this._buttonElement.disabled = true;
+    this._toggleButtonState(); 
 
     this._inputList.forEach((inputElement) => {
-      inputElement.classList.remove(this._inputErrorClass);
+      this._hideInputError(inputElement);
     });
   }
 }
